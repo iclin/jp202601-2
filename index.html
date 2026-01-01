@@ -89,7 +89,8 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
             <!-- Tab 導航欄 (懸浮於圖片右下角) -->
-            <div class="absolute bottom-6 right-4 flex space-x-3 overflow-visible z-20">
+            <!-- 修改說明: 加入 sm:space-x-3 與 space-x-2，讓手機版按鈕靠得近一點，避免佔用太多寬度 -->
+            <div class="absolute bottom-6 right-4 flex space-x-2 sm:space-x-3 overflow-visible z-20">
                 <button @click="currentTab = 'schedule'" :class="{'tab-active text-macaron-blue': currentTab === 'schedule'}" 
                     class="w-12 h-12 rounded-full bg-white/80 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
                     <i class="fa-solid fa-map-location-dot text-lg"></i>
@@ -108,7 +109,9 @@
                 </button>
             </div>
             
-            <div class="absolute bottom-6 left-6 text-white drop-shadow-md">
+            <!-- 標題文字 -->
+            <!-- 修改說明: 改為 top-8 (手機版置頂)，並加入 sm:top-auto sm:bottom-6 (電腦版回到下方)，實現響應式佈局 -->
+            <div class="absolute top-8 left-6 sm:top-auto sm:bottom-6 text-white drop-shadow-md">
                 <h1 class="text-2xl font-bold tracking-widest">JAPAN 2026</h1>
                 <p class="text-sm font-light opacity-90">四國 / 東京之旅</p>
             </div>
