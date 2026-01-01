@@ -71,6 +71,12 @@
             background: white;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
+        /* 直式文字 CSS */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            letter-spacing: 0.2em;
+        }
     </style>
 </head>
 <body class="text-muji-text">
@@ -78,7 +84,6 @@
     <div id="app" class="relative min-h-screen pb-20">
         
         <!-- Header Image & Decoration -->
-        <!-- 修改：高度增加到 280px 以容納垂直按鈕 -->
         <header class="relative w-full h-[280px] bg-white header-curve z-10 overflow-hidden">
             <!-- 圖片容器 -->
             <img src="Gemini_Generated_Image_52y8m952y8m952y8.jpg" 
@@ -86,34 +91,41 @@
                  alt="Header Banner"
                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop';">
             
-            <!-- 漸層遮罩 (維持淡淡的就好) -->
-            <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
+            <!-- 漸層遮罩 (極淡，幾乎透明) -->
+            <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent"></div>
 
-            <!-- Tab 導航欄 (垂直排列於右側) -->
-            <div class="absolute top-8 right-4 flex flex-col space-y-3 z-20">
+            <!-- 1. Japan 2026 (右上角小標籤) -->
+            <div class="absolute top-4 right-4 z-20">
+                <span class="text-[10px] font-bold text-gray-500 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/40 shadow-sm tracking-widest">
+                    JAPAN 2026
+                </span>
+            </div>
+
+            <!-- 2. Tab 導航欄 (垂直排列於右側，稍微往下移避開標題) -->
+            <div class="absolute top-14 right-4 flex flex-col space-y-3 z-20">
                 <button @click="currentTab = 'schedule'" :class="{'tab-active text-macaron-blue': currentTab === 'schedule'}" 
-                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
+                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md border border-white/40">
                     <i class="fa-solid fa-map-location-dot text-lg"></i>
                 </button>
                 <button @click="currentTab = 'info'" :class="{'tab-active text-macaron-pink': currentTab === 'info'}" 
-                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
+                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md border border-white/40">
                     <i class="fa-solid fa-circle-info text-lg"></i>
                 </button>
                 <button @click="currentTab = 'shopping'" :class="{'tab-active text-macaron-green': currentTab === 'shopping'}" 
-                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
+                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md border border-white/40">
                     <i class="fa-solid fa-basket-shopping text-lg"></i>
                 </button>
                 <button @click="currentTab = 'expenses'" :class="{'tab-active text-macaron-yellow': currentTab === 'expenses'}" 
-                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
+                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md border border-white/40">
                     <i class="fa-solid fa-yen-sign text-lg"></i>
                 </button>
             </div>
             
-            <!-- 標題文字 (加入半透明毛玻璃背景) -->
-            <!-- 修改重點：加入 bg-white/70 backdrop-blur-md rounded-xl px-5 py-3 shadow-sm border border-white/40 -->
-            <div class="absolute top-8 left-6 z-20 bg-white/70 backdrop-blur-md rounded-xl px-5 py-3 shadow-sm border border-white/40">
-                <h1 class="text-2xl font-bold tracking-widest text-gray-800">JAPAN 2026</h1>
-                <p class="text-sm font-medium text-gray-600 mt-1">四國 / 東京之旅</p>
+            <!-- 3. 四國/東京之旅 (直式，位於按鈕左側) -->
+            <div class="absolute top-14 right-20 z-20">
+                <div class="vertical-text bg-white/60 backdrop-blur-sm py-4 px-2 rounded-full border border-white/30 shadow-sm text-gray-700 font-bold text-sm h-[220px] flex items-center justify-center">
+                    四國 / 東京之旅
+                </div>
             </div>
         </header>
 
