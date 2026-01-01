@@ -66,7 +66,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
         .tab-active {
-            transform: translateY(-5px);
+            transform: translateY(-2px); /* 垂直排列時位移稍微小一點比較自然 */
             color: #4A4A4A;
             background: white;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -78,42 +78,43 @@
     <div id="app" class="relative min-h-screen pb-20">
         
         <!-- Header Image & Decoration -->
-        <header class="relative w-full h-[250px] bg-white header-curve z-10 overflow-hidden">
-            <!-- 圖片容器: 優先讀取您的上傳圖片，若失敗則自動載入網路風景圖，再失敗則顯示色塊 -->
+        <!-- 修改：高度增加到 280px 以容納垂直按鈕 -->
+        <header class="relative w-full h-[280px] bg-white header-curve z-10 overflow-hidden">
+            <!-- 圖片容器 -->
             <img src="Gemini_Generated_Image_52y8m952y8m952y8.jpg" 
                  class="w-full h-full object-cover object-center transition-opacity duration-500" 
                  alt="Header Banner"
                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop';">
             
-            <!-- 漸層遮罩，讓文字清楚一點 -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <!-- 漸層遮罩 (調淡一點，因為文字變黑了) -->
+            <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
 
-            <!-- Tab 導航欄 (懸浮於圖片右下角) -->
-            <!-- 修改說明: 加入 sm:space-x-3 與 space-x-2，讓手機版按鈕靠得近一點，避免佔用太多寬度 -->
-            <div class="absolute bottom-6 right-4 flex space-x-2 sm:space-x-3 overflow-visible z-20">
+            <!-- Tab 導航欄 (垂直排列於右側) -->
+            <!-- 修改：flex-col (垂直), right-4 (靠右), top-8 (靠上), space-y-3 (垂直間距) -->
+            <div class="absolute top-8 right-4 flex flex-col space-y-3 z-20">
                 <button @click="currentTab = 'schedule'" :class="{'tab-active text-macaron-blue': currentTab === 'schedule'}" 
-                    class="w-12 h-12 rounded-full bg-white/80 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
+                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
                     <i class="fa-solid fa-map-location-dot text-lg"></i>
                 </button>
                 <button @click="currentTab = 'info'" :class="{'tab-active text-macaron-pink': currentTab === 'info'}" 
-                    class="w-12 h-12 rounded-full bg-white/80 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
+                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
                     <i class="fa-solid fa-circle-info text-lg"></i>
                 </button>
                 <button @click="currentTab = 'shopping'" :class="{'tab-active text-macaron-green': currentTab === 'shopping'}" 
-                    class="w-12 h-12 rounded-full bg-white/80 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
+                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
                     <i class="fa-solid fa-basket-shopping text-lg"></i>
                 </button>
                 <button @click="currentTab = 'expenses'" :class="{'tab-active text-macaron-yellow': currentTab === 'expenses'}" 
-                    class="w-12 h-12 rounded-full bg-white/80 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
+                    class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
                     <i class="fa-solid fa-yen-sign text-lg"></i>
                 </button>
             </div>
             
             <!-- 標題文字 -->
-            <!-- 修改說明: 改為 top-8 (手機版置頂)，並加入 sm:top-auto sm:bottom-6 (電腦版回到下方)，實現響應式佈局 -->
-            <div class="absolute top-8 left-6 sm:top-auto sm:bottom-6 text-white drop-shadow-md">
+            <!-- 修改：改為黑色字體 (text-gray-800) 並固定在左上角 (top-8 left-6) -->
+            <div class="absolute top-8 left-6 text-gray-800 drop-shadow-sm z-20">
                 <h1 class="text-2xl font-bold tracking-widest">JAPAN 2026</h1>
-                <p class="text-sm font-light opacity-90">四國 / 東京之旅</p>
+                <p class="text-sm font-medium opacity-80">四國 / 東京之旅</p>
             </div>
         </header>
 
