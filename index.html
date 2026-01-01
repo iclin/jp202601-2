@@ -86,11 +86,10 @@
                  alt="Header Banner"
                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop';">
             
-            <!-- 漸層遮罩 (調淡一點，因為文字變黑了) -->
+            <!-- 漸層遮罩 (維持淡淡的就好) -->
             <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
 
             <!-- Tab 導航欄 (垂直排列於右側) -->
-            <!-- 修改：flex-col (垂直), right-4 (靠右), top-8 (靠上), space-y-3 (垂直間距) -->
             <div class="absolute top-8 right-4 flex flex-col space-y-3 z-20">
                 <button @click="currentTab = 'schedule'" :class="{'tab-active text-macaron-blue': currentTab === 'schedule'}" 
                     class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md">
@@ -110,11 +109,11 @@
                 </button>
             </div>
             
-            <!-- 標題文字 -->
-            <!-- 修改：改為黑色字體 (text-gray-800) 並固定在左上角 (top-8 left-6) -->
-            <div class="absolute top-8 left-6 text-gray-800 drop-shadow-sm z-20">
-                <h1 class="text-2xl font-bold tracking-widest">JAPAN 2026</h1>
-                <p class="text-sm font-medium opacity-80">四國 / 東京之旅</p>
+            <!-- 標題文字 (加入半透明毛玻璃背景) -->
+            <!-- 修改重點：加入 bg-white/70 backdrop-blur-md rounded-xl px-5 py-3 shadow-sm border border-white/40 -->
+            <div class="absolute top-8 left-6 z-20 bg-white/70 backdrop-blur-md rounded-xl px-5 py-3 shadow-sm border border-white/40">
+                <h1 class="text-2xl font-bold tracking-widest text-gray-800">JAPAN 2026</h1>
+                <p class="text-sm font-medium text-gray-600 mt-1">四國 / 東京之旅</p>
             </div>
         </header>
 
