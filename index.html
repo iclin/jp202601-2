@@ -86,8 +86,9 @@
         <!-- Header Image & Decoration -->
         <header class="relative w-full h-[280px] bg-white header-curve z-10 overflow-hidden">
             <!-- 圖片容器 -->
+            <!-- 修改重點：加入 translate-x-1 (右移4px) 和 scale-[1.02] (微放大補滿邊緣) -->
             <img src="Gemini_Generated_Image_52y8m952y8m952y8.jpg" 
-                 class="w-full h-full object-cover object-center transition-opacity duration-500" 
+                 class="w-full h-full object-cover object-center transition-all duration-500 translate-x-1 scale-[1.02]" 
                  alt="Header Banner"
                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop';">
             
@@ -95,14 +96,14 @@
             <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent"></div>
 
             <!-- 1. Japan 2026 (右上角小標籤) -->
-            <!-- 修改：right-36 改為 right-24，微調位置 -->
+            <!-- 修改：保持 right-24 -->
             <div class="absolute top-4 right-24 z-20">
                 <span class="text-[10px] font-bold text-gray-500 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/40 shadow-sm tracking-widest">
                     JAPAN 2026
                 </span>
             </div>
 
-            <!-- 2. Tab 導航欄 (垂直排列於右側，維持不變) -->
+            <!-- 2. Tab 導航欄 (垂直排列於右側) -->
             <div class="absolute top-14 right-4 flex flex-col space-y-3 z-20">
                 <button @click="currentTab = 'schedule'" :class="{'tab-active text-macaron-blue': currentTab === 'schedule'}" 
                     class="w-12 h-12 rounded-full bg-white/90 backdrop-blur text-gray-400 flex items-center justify-center transition-all duration-300 shadow-md border border-white/40">
@@ -123,7 +124,7 @@
             </div>
             
             <!-- 3. 四國/東京之旅 (直式，位於按鈕左側) -->
-            <!-- 修改：right-36 改為 right-24，微調位置 -->
+            <!-- 修改：保持 right-24 -->
             <div class="absolute top-14 right-24 z-20">
                 <div class="vertical-text bg-white/60 backdrop-blur-sm py-4 px-2 rounded-full border border-white/30 shadow-sm text-gray-700 font-bold text-sm h-[220px] flex items-center justify-center">
                     四國 / 東京之旅
