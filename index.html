@@ -112,8 +112,8 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
 
             <!-- 1. Japan 2026 (右上角小標籤) -->
-            <!-- 保持在 right-24 top-4 -->
-            <div class="absolute top-4 right-24 z-20">
+            <!-- 修改：right-24 改為 right-20，往右微調 -->
+            <div class="absolute top-4 right-20 z-20">
                 <span class="text-[10px] font-black text-white bg-pop-dark/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 shadow-md tracking-widest uppercase">
                     <i class="fa-solid fa-plane-up mr-1 text-pop-red"></i> Japan 2026
                 </span>
@@ -141,8 +141,8 @@
             </div>
             
             <!-- 3. 四國/東京之旅 (直式，位於按鈕左側) -->
-            <!-- 保持在 right-24 top-14 (這樣它會剛好在 Japan 2026 下方) -->
-            <div class="absolute top-14 right-24 z-20">
+            <!-- 修改：right-24 改為 right-20，跟隨上方標籤一起移動，保持垂直對齊 -->
+            <div class="absolute top-14 right-20 z-20">
                 <div class="vertical-text bg-white/90 backdrop-blur-md py-5 px-3 rounded-full border border-white shadow-lg text-pop-dark font-black text-sm h-[220px] flex items-center justify-center">
                     四國 / 東京之旅
                     <span class="mt-2 text-pop-red text-xs">●</span>
@@ -236,19 +236,15 @@
                             <div class="h-4 border-l-2 border-dashed border-gray-300"></div>
                         </div>
 
-                        <!-- 行程卡片 (配色更鮮明，使用左側粗線條) -->
-                        <div class="card-glass rounded-2xl p-5 shadow-soft relative overflow-hidden active:scale-95 transition-transform bg-white"
+                        <!-- 行程卡片 (修改：移除 @click="openMap", 移除 active:scale-95) -->
+                        <div class="card-glass rounded-2xl p-5 shadow-soft relative overflow-hidden bg-white"
                              :class="{'border-l-[6px] border-l-pop-blue': event.type === 'sightseeing', 
                                       'border-l-[6px] border-l-pop-red': event.type === 'food',
                                       'border-l-[6px] border-l-pop-yellow': event.type === 'flight',
                                       'border-l-[6px] border-l-pop-green': event.type === 'shopping',
-                                      'border-l-[6px] border-l-gray-400': event.type === 'hotel'}"
-                             @click="openMap(event.name)">
+                                      'border-l-[6px] border-l-gray-400': event.type === 'hotel'}">
                             
-                            <!-- 編輯按鈕 -->
-                            <button @click.stop="editEvent(event)" class="absolute top-3 right-3 text-gray-300 hover:text-pop-blue p-2 transition-colors">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
+                            <!-- 移除原本右上角的絕對定位編輯按鈕 -->
 
                             <!-- 特殊樣式：航班 -->
                             <div v-if="event.type === 'flight'" class="flex flex-col">
@@ -295,6 +291,17 @@
                                     </span>
                                 </div>
                             </div>
+
+                            <!-- 新增：操作按鈕區 (Edit & Navigate) -->
+                            <div class="flex gap-3 mt-4 pt-3 border-t border-gray-100">
+                                <button @click.stop="editEvent(event)" class="flex-1 bg-gray-50 text-gray-600 py-2.5 rounded-xl text-xs font-bold hover:bg-gray-100 active:scale-95 transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-pen-to-square"></i> 修改
+                                </button>
+                                <button @click.stop="openMap(event.name)" class="flex-1 bg-pop-blue text-white py-2.5 rounded-xl text-xs font-bold hover:bg-blue-400 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm shadow-blue-100">
+                                    <i class="fa-solid fa-location-arrow"></i> 導航
+                                </button>
+                            </div>
+
                         </div>
                     </div>
 
