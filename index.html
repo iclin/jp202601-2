@@ -311,7 +311,7 @@
                     <h3 class="font-bold text-muji-text mb-4 border-l-4 border-pop-blue pl-3 text-lg flex items-center">
                         <i class="fa-solid fa-plane text-pop-blue mr-2"></i> 航班資訊
                     </h3>
-                    <!-- 靜態航班列表 (維持不變) -->
+                    <!-- 去程 JX300 -->
                     <div class="mb-5 pb-5 border-b border-dashed border-gray-200">
                         <div class="flex justify-between text-sm font-bold mb-2">
                             <span class="bg-pop-blue text-white px-2 py-0.5 rounded text-xs">去程</span>
@@ -329,7 +329,77 @@
                             <div class="text-center"><div class="text-3xl font-black text-pop-dark">TAK</div><div class="text-xs font-bold text-gray-400">12:20</div></div>
                         </div>
                     </div>
-                    <!-- (...省略重複的航班與租車資訊，保持原樣) -->
+                    <!-- 國內 JX482 -->
+                    <div class="mb-5 pb-5 border-b border-dashed border-gray-200">
+                        <div class="flex justify-between text-sm font-bold mb-2">
+                            <span class="bg-pop-blue text-white px-2 py-0.5 rounded text-xs">國內</span>
+                            <span class="font-mono text-gray-500">2026.01.29</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="text-center"><div class="text-3xl font-black text-pop-dark">TAK</div><div class="text-xs font-bold text-gray-400">15:25</div></div>
+                            <div class="text-xs text-gray-400 flex flex-col items-center w-full px-2">
+                                <span class="font-bold text-pop-blue">JL482</span>
+                                <span class="text-[10px] text-gray-400 scale-90 bg-gray-100 px-1 rounded mt-0.5">(FRMXN8)</span>
+                                <div class="w-full h-[2px] bg-gray-200 my-1 relative">
+                                    <i class="fa-solid fa-plane absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-300 text-[10px]"></i>
+                                </div>
+                            </div>
+                            <div class="text-center"><div class="text-3xl font-black text-pop-dark">HND</div><div class="text-xs font-bold text-gray-400">16:45</div></div>
+                        </div>
+                    </div>
+                    <!-- 國內 JL455 -->
+                    <div class="mb-5 pb-5 border-b border-dashed border-gray-200">
+                        <div class="flex justify-between text-sm font-bold mb-2">
+                            <span class="bg-pop-blue text-white px-2 py-0.5 rounded text-xs">國內</span>
+                            <span class="font-mono text-gray-500">2026.02.01</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="text-center"><div class="text-3xl font-black text-pop-dark">HND</div><div class="text-xs font-bold text-gray-400">10:15</div></div>
+                            <div class="text-xs text-gray-400 flex flex-col items-center w-full px-2">
+                                <span class="font-bold text-pop-blue">JL455</span>
+                                <span class="text-[10px] text-gray-400 scale-90 bg-gray-100 px-1 rounded mt-0.5">(FRSWV3)</span>
+                                <div class="w-full h-[2px] bg-gray-200 my-1 relative">
+                                    <i class="fa-solid fa-plane absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-300 text-[10px]"></i>
+                                </div>
+                            </div>
+                            <div class="text-center"><div class="text-3xl font-black text-pop-dark">TKS</div><div class="text-xs font-bold text-gray-400">11:35</div></div>
+                        </div>
+                    </div>
+                    <!-- 回程 JX301 -->
+                    <div class="mb-5 pb-5 border-b border-dashed border-gray-200">
+                        <div class="flex justify-between text-sm font-bold mb-2">
+                            <span class="bg-pop-red text-white px-2 py-0.5 rounded text-xs">回程</span>
+                            <span class="font-mono text-gray-500">2026.02.06</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="text-center"><div class="text-3xl font-black text-pop-dark">TAK</div><div class="text-xs font-bold text-gray-400">13:20</div></div>
+                            <div class="text-xs text-gray-400 flex flex-col items-center w-full px-2">
+                                <span class="font-bold text-pop-red">JX301</span>
+                                <span class="text-[10px] text-gray-400 scale-90 bg-gray-100 px-1 rounded mt-0.5">(FRGX8S)</span>
+                                <div class="w-full h-[2px] bg-gray-200 my-1 relative">
+                                    <i class="fa-solid fa-plane absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-300 text-[10px] rotate-180"></i>
+                                </div>
+                            </div>
+                            <div class="text-center"><div class="text-3xl font-black text-pop-dark">RMQ</div><div class="text-xs font-bold text-gray-400">15:40</div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ... 其他資訊保持不變 ... -->
+                <!-- 住宿資訊 -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-muji-text mb-4 border-l-4 border-pop-green pl-3 text-lg flex items-center">
+                        <i class="fa-solid fa-hotel text-pop-green mr-2"></i> 住宿資訊
+                    </h3>
+                    <div v-for="(hotel, idx) in staticInfo.hotels" :key="idx" class="mb-4 last:mb-0 bg-gray-50 rounded-xl p-3">
+                        <div class="text-xs font-bold text-pop-green mb-1">{{ hotel.day }}</div>
+                        <div class="text-sm font-bold text-gray-700 leading-tight">{{ hotel.name }}</div>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-xs text-gray-400 w-3/4 truncate"><i class="fa-solid fa-location-dot mr-1"></i>{{ hotel.address }}</div>
+                            <a :href="'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(hotel.name + ' ' + hotel.address)" target="_blank" class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-pop-green shadow-sm border border-gray-100">
+                                <i class="fa-solid fa-location-arrow text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -404,8 +474,8 @@
 
         </main>
 
-        <!-- Modals 保持不變 (省略部分重複代碼，功能邏輯在下方 JS 更新) -->
-        <!-- 行程編輯 Modal -->
+        <!-- Modals -->
+        <!-- 行程編輯 Modal (更新：加入航班專屬欄位) -->
         <div v-if="showEventModal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center pointer-events-none">
             <div class="absolute inset-0 bg-pop-dark/40 backdrop-blur-sm pointer-events-auto transition-opacity" @click="closeEventModal"></div>
             <div class="relative z-10 bg-white w-full sm:w-96 rounded-t-3xl sm:rounded-3xl p-6 pointer-events-auto animate-slide-up shadow-2xl max-h-[90vh] overflow-y-auto">
@@ -413,32 +483,72 @@
                     <i class="fa-solid fa-pen-nib text-pop-blue mr-2"></i> {{ isEditing ? '編輯行程' : '新增行程' }}
                 </h3>
                 <div class="space-y-4">
+                    <!-- 基本欄位 -->
                     <div>
                         <label class="text-xs font-bold text-gray-400 block mb-2 uppercase tracking-wide">日期</label>
                         <select v-model="eventForm.dayIndex" class="w-full bg-gray-50 rounded-xl p-3 text-sm font-bold text-gray-700 outline-none border border-gray-100">
                             <option v-for="(day, idx) in tripDays" :value="idx" :key="idx">{{ day.date }} ({{ day.week }})</option>
                         </select>
                     </div>
+                    
+                    <!-- 類別選擇 (影響下方欄位) -->
                     <div>
-                        <label class="text-xs font-bold text-gray-400 block mb-2 uppercase tracking-wide">名稱</label>
-                        <input type="text" v-model="eventForm.name" class="w-full bg-gray-50 rounded-xl p-3 text-sm font-bold border-b-2 border-transparent focus:border-pop-blue outline-none placeholder-gray-300" placeholder="輸入地點或活動名稱">
+                         <label class="text-xs font-bold text-gray-400 block mb-2 uppercase tracking-wide">類別</label>
+                         <select v-model="eventForm.type" class="w-full bg-gray-50 rounded-xl p-3 text-sm font-bold text-gray-700 outline-none">
+                             <option value="sightseeing">🌸 景點</option>
+                             <option value="food">🍱 美食</option>
+                             <option value="shopping">🛍️ 購物</option>
+                             <option value="hotel">🏨 住宿</option>
+                             <option value="flight">✈️ 航班 (特殊格式)</option>
+                             <option value="other">✨ 其他</option>
+                         </select>
                     </div>
-                    <div class="flex gap-3">
-                        <div class="flex-1">
+
+                    <!-- 條件顯示：一般行程欄位 -->
+                    <div v-if="eventForm.type !== 'flight'" class="space-y-4">
+                        <div>
+                            <label class="text-xs font-bold text-gray-400 block mb-2 uppercase tracking-wide">名稱</label>
+                            <input type="text" v-model="eventForm.name" class="w-full bg-gray-50 rounded-xl p-3 text-sm font-bold border-b-2 border-transparent focus:border-pop-blue outline-none placeholder-gray-300" placeholder="輸入地點或活動名稱">
+                        </div>
+                        <div>
                             <label class="text-xs font-bold text-gray-400 block mb-2 uppercase tracking-wide">開始時間</label>
                             <input type="time" v-model="eventForm.startTime" class="w-full bg-gray-50 rounded-xl p-3 text-sm font-bold text-gray-700 outline-none">
                         </div>
-                        <div class="flex-1">
-                             <label class="text-xs font-bold text-gray-400 block mb-2 uppercase tracking-wide">類別</label>
-                             <select v-model="eventForm.type" class="w-full bg-gray-50 rounded-xl p-3 text-sm font-bold text-gray-700 outline-none">
-                                 <option value="sightseeing">🌸 景點</option>
-                                 <option value="food">🍱 美食</option>
-                                 <option value="shopping">🛍️ 購物</option>
-                                 <option value="hotel">🏨 住宿</option>
-                                 <option value="other">✨ 其他</option>
-                             </select>
+                    </div>
+
+                    <!-- 條件顯示：航班專屬欄位 -->
+                    <div v-if="eventForm.type === 'flight'" class="bg-yellow-50 p-4 rounded-2xl border border-pop-yellow space-y-3">
+                        <p class="text-xs font-black text-yellow-600 uppercase tracking-wider mb-2">航班詳細設定</p>
+                        <div class="flex gap-2">
+                            <div class="flex-1">
+                                <label class="text-[10px] font-bold text-gray-400 block mb-1">起飛機場</label>
+                                <input type="text" v-model="eventForm.flightFrom" class="w-full bg-white rounded-lg p-2 text-sm font-bold text-center uppercase" placeholder="RMQ">
+                            </div>
+                            <div class="flex items-center justify-center pt-4">
+                                <i class="fa-solid fa-arrow-right text-yellow-400"></i>
+                            </div>
+                            <div class="flex-1">
+                                <label class="text-[10px] font-bold text-gray-400 block mb-1">抵達機場</label>
+                                <input type="text" v-model="eventForm.flightTo" class="w-full bg-white rounded-lg p-2 text-sm font-bold text-center uppercase" placeholder="TAK">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-400 block mb-1">航班代號</label>
+                            <input type="text" v-model="eventForm.flightCode" class="w-full bg-white rounded-lg p-2 text-sm font-bold uppercase" placeholder="JX300">
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="flex-1">
+                                <label class="text-[10px] font-bold text-gray-400 block mb-1">起飛時間</label>
+                                <input type="time" v-model="eventForm.startTime" class="w-full bg-white rounded-lg p-2 text-sm font-bold">
+                            </div>
+                            <div class="flex-1">
+                                <label class="text-[10px] font-bold text-gray-400 block mb-1">抵達時間</label>
+                                <input type="time" v-model="eventForm.endTime" class="w-full bg-white rounded-lg p-2 text-sm font-bold">
+                            </div>
                         </div>
                     </div>
+
+                    <!-- 交通方式 -->
                     <div class="bg-gray-50 p-3 rounded-xl border border-gray-100">
                         <label class="text-xs font-bold text-pop-blue block mb-2 uppercase tracking-wide"><i class="fa-solid fa-route mr-1"></i> 交通 (從上一站)</label>
                         <div class="flex gap-2">
@@ -450,12 +560,10 @@
                              <input type="text" v-model="eventForm.transportTime" placeholder="預估時間 (例: 15分)" class="bg-white rounded-lg p-2 text-sm font-bold flex-1 shadow-sm placeholder-gray-300">
                         </div>
                     </div>
-                    <div v-if="eventForm.type === 'sightseeing'">
-                        <label class="text-xs font-bold text-gray-400 block mb-2 uppercase tracking-wide">門票資訊</label>
-                        <input type="text" v-model="eventForm.ticket" class="w-full bg-gray-50 rounded-xl p-3 text-sm font-bold" placeholder="金額或預約狀態">
-                    </div>
+
+                    <!-- 備註 -->
                     <div>
-                        <label class="text-xs font-bold text-gray-400 block mb-2 uppercase tracking-wide">備註</label>
+                        <label class="text-xs font-bold text-gray-400 block mb-2 uppercase tracking-wide">備註 / 標籤</label>
                         <textarea v-model="eventForm.note" class="w-full bg-gray-50 rounded-xl p-3 text-sm h-20 font-medium text-gray-600 placeholder-gray-300" placeholder="特色、必吃、注意事項..."></textarea>
                     </div>
                 </div>
@@ -466,7 +574,7 @@
             </div>
         </div>
 
-        <!-- 購物 Modal -->
+        <!-- 購物 Modal (保持不變) -->
         <div v-if="showShoppingModal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center pointer-events-none">
             <div class="absolute inset-0 bg-pop-dark/40 backdrop-blur-sm pointer-events-auto transition-opacity" @click="showShoppingModal = false"></div>
             <div class="relative z-10 bg-white w-full sm:w-96 rounded-t-3xl sm:rounded-3xl p-6 pointer-events-auto animate-slide-up">
@@ -484,7 +592,7 @@
             </div>
         </div>
 
-        <!-- 花費 Modal -->
+        <!-- 花費 Modal (保持不變) -->
         <div v-if="showExpenseModal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center pointer-events-none">
             <div class="absolute inset-0 bg-pop-dark/40 backdrop-blur-sm pointer-events-auto transition-opacity" @click="showExpenseModal = false"></div>
             <div class="relative z-10 bg-white w-full sm:w-96 rounded-t-3xl sm:rounded-3xl p-6 pointer-events-auto animate-slide-up">
@@ -725,13 +833,54 @@
 
                 // CRUD Actions
                 const openAddModal = () => { isEditing.value = false; eventForm.value = { dayIndex: selectedDayIndex.value, type: 'sightseeing', transportType: 'walk', transportTime: '15 mins' }; showEventModal.value = true; };
-                const editEvent = (event) => { isEditing.value = true; let dayIdx = -1; scheduleData.value.forEach((day, idx) => { if (day.find(e => e.id === event.id)) dayIdx = idx; }); eventForm.value = { ...event, dayIndex: dayIdx }; showEventModal.value = true; };
+                const editEvent = (event) => { 
+                    isEditing.value = true; 
+                    let dayIdx = -1; 
+                    scheduleData.value.forEach((day, idx) => { if (day.find(e => e.id === event.id)) dayIdx = idx; }); 
+                    
+                    // 修正：深拷貝事件物件，避免編輯時直接影響畫面（直到按下儲存）
+                    eventForm.value = JSON.parse(JSON.stringify(event)); 
+                    eventForm.value.dayIndex = dayIdx;
+                    
+                    showEventModal.value = true; 
+                };
                 const saveEvent = () => {
                     const targetDay = eventForm.value.dayIndex;
-                    if (isEditing.value) scheduleData.value = scheduleData.value.map(day => day.filter(e => e.id !== eventForm.value.id));
+                    
+                    // 1. 計算飛行時間 (如果是航班)
+                    if (eventForm.value.type === 'flight' && eventForm.value.startTime && eventForm.value.endTime) {
+                        const start = new Date(`2000-01-01T${eventForm.value.startTime}`);
+                        const end = new Date(`2000-01-01T${eventForm.value.endTime}`);
+                        let diff = (end - start) / 60000; // 分鐘
+                        if (diff < 0) diff += 24 * 60; // 跨夜
+                        const h = Math.floor(diff / 60);
+                        const m = diff % 60;
+                        eventForm.value.flightDuration = `${h}h ${m}m`;
+                        
+                        // 自動生成名稱
+                        if (!eventForm.value.name) {
+                            eventForm.value.name = `${eventForm.value.flightFrom} -> ${eventForm.value.flightTo}`;
+                        }
+                    }
+
+                    // 2. 更新資料
+                    if (isEditing.value) {
+                        // 先移除舊的 (可能換天了)
+                        scheduleData.value = scheduleData.value.map(day => day.filter(e => e.id !== eventForm.value.id));
+                    }
+                    
+                    // 確保目標天數陣列存在
                     if (!scheduleData.value[targetDay]) scheduleData.value[targetDay] = [];
-                    scheduleData.value[targetDay].push({ ...eventForm.value, id: eventForm.value.id || Date.now() });
+                    
+                    // 加入新的
+                    scheduleData.value[targetDay].push({ 
+                        ...eventForm.value, 
+                        id: eventForm.value.id || Date.now() 
+                    });
+                    
+                    // 排序
                     scheduleData.value[targetDay].sort((a, b) => (a.startTime || '00:00').localeCompare(b.startTime || '00:00'));
+
                     closeEventModal();
                 };
                 const confirmDelete = () => { if (confirm('確定要刪除此行程嗎？')) { scheduleData.value = scheduleData.value.map(day => day.filter(e => e.id !== eventForm.value.id)); closeEventModal(); } };
